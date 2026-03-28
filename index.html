@@ -204,7 +204,7 @@ textarea:focus{border-color:var(--g3);box-shadow:0 0 0 3px rgba(45,184,104,.15)}
         <div class="sec-ic">📷</div>
         <div>
           <div class="sec-title">ถ่ายรูปขยะ</div>
-          <div class="sec-sub">ถ่ายให้เห็นชัดเจน · สูงสุด 5 รูป</div>
+          <div class="sec-sub">ถ่ายให้เห็นตัวเลขบนเครื่องชั่งให้ชัดเจน · สูงสุด 3 รูป</div>
         </div>
       </div>
 
@@ -303,7 +303,7 @@ function val(){
 /* ─ PHOTOS ─ */
 function addPhotos(files){
   for(const f of files){
-    if(photos.length>=5){ alert('แนบได้สูงสุด 5 รูปค่ะ'); break; }
+    if(photos.length>=5){ alert('แนบได้สูงสุด 3 รูปค่ะ'); break; }
     if(f.size>5*1024*1024){ alert(`"${f.name}" ขนาดเกิน 5 MB ค่ะ`); continue; }
     const r=new FileReader();
     r.onload=e=>{ photos.push({name:f.name,type:f.type,dataUrl:e.target.result}); renderPrev(); };
