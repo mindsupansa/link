@@ -357,7 +357,12 @@ async function submit(){
     el('ld-sub').textContent=photos.length+' รูป';
 
     if(GAS_URL!=='YOUR_GOOGLE_APPS_SCRIPT_URL'){
-      await fetch(GAS_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+      await fetch(GAS_URL,{
+  method:'POST',
+  mode:'no-cors',
+  headers:{'Content-Type':'application/json'},
+  body:JSON.stringify(payload)
+});
     } else {
       await new Promise(r=>setTimeout(r,2000));
     }
