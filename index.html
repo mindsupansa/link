@@ -330,6 +330,7 @@ uz.addEventListener('drop',e=>{e.preventDefault();uz.classList.remove('drag');ad
 /* ─ SUMMARY ─ */
 function renderSum(){
   const rows=[
+    ['👤 ชื่อผู้ฝาก', g('u-name')],
     ['🗑️ ประเภทขยะ', getWaste()],
     ['⚖️ น้ำหนักประมาณ', g('u-weight')+' กก.'],
     ['📷 รูปที่แนบ', photos.length+' รูป'],
@@ -348,10 +349,11 @@ async function submit(){
 
   const ref='WD'+Date.now().toString().slice(-6);
   const payload={
-    ref,
-    wasteTypes: getWaste(),
-    weight:     parseFloat(g('u-weight')),
-    note:       g('u-note'),
+  ref,
+  name:       g('u-name'),
+  wasteTypes: getWaste(),
+  weight:     parseFloat(g('u-weight')),
+  note:       g('u-note'),
     timestamp:  new Date().toLocaleString('th-TH'),
     photos:     photos.map(p=>({name:p.name,type:p.type,data:p.dataUrl.split(',')[1]}))
   };
@@ -377,6 +379,7 @@ async function submit(){
 
     el('refnum').textContent=ref;
     el('done-sum').innerHTML=[
+      ['👤 ชื่อผู้ฝาก', payload.name],
       ['🗑️ ประเภทขยะ', payload.wasteTypes],
       ['⚖️ น้ำหนักประมาณ', payload.weight+' กก.'],
       ['📷 รูปที่ส่ง', photos.length+' รูป'],
