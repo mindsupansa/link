@@ -392,7 +392,7 @@ async function submit(){
 /* ─ RESET ─ */
 function reset(){
   document.querySelectorAll('input[type=checkbox]').forEach(c=>c.checked=false);
-  el('u-weight').value=''; el('u-note').value='';
+  el('u-weight').value=''; 
   el('sbtn').disabled=false;
   photos=[]; renderPrev();
   show('p1'); setFlow(1); scrollTop();
